@@ -3,6 +3,8 @@
 // Call this function when the page loads (the "ready" event)
 $(document).ready(function() {
 	initializePage();
+
+	$("a.fName").click(changeText);
 })
 
 /*
@@ -43,4 +45,11 @@ function anagrammedName(name) {
 		console.log(name + " not known for anagramming.");
 		return name;
 	}
+}
+
+function changeText(e) {
+	e.preventDefault();
+	var fName = $(this).closest(".fName");
+	var oName = $(this).closest(".fName").text();
+	$(fName).text(anagrammedName(oName));
 }
